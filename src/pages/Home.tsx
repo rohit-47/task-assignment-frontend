@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import '../styling/Home.css';
 
 function Home() {
   const navigate = useNavigate();
@@ -8,11 +9,13 @@ function Home() {
   }
 
   return (
-    <>
-      This is Home Component
-      <br/>
-      <button onClick = {handleClick}> Go to Tasks </button>
-    </>
+    <div className="home-container">
+      <h1>📘 Welcome to Weekly Note Keeper</h1>
+      <p>Keep track of your daily notes organized by week.</p>
+      <button className="navigate-button" onClick={handleClick}>
+        View My Weekly Notes
+      </button>
+    </div>
   );
 }
 

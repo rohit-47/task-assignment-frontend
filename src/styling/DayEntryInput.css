@@ -1,0 +1,15 @@
+.note-input {
+  width: 90%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease;
+}
+
+.note-input:focus {
+  border-color: #004f9e;
+  outline: none;
+  background-color: #fff;
+}
