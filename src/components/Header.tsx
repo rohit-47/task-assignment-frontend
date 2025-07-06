@@ -22,7 +22,7 @@ function Header() {
   return (
     <header className="navbar">
       <div className="navbar-left">
-        <span className="app-logo">📦 Cataloger</span>
+        <span className="app-logo" style={{cursor: 'pointer'}} onClick={() => navigate('/')}>📦 Cataloger</span>
       </div>
       <nav className="navbar-links">
         <Link to="/">Home</Link>

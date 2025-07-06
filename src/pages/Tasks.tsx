@@ -1,26 +1,44 @@
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import WeekSelector from '../components/WeekSelector.tsx';
-import NoteTable from '../components/NoteTable.tsx';
-import FooterSummary from '../components/FooterSummary.tsx';
+import TaskList from '../components/TaskList';
+import TaskDetails from '../components/TaskDetails';
+import FooterSummary from '../components/Footer';
 import '../styling/Tasks.css';
 
 function Tasks() {
+  const [selectedTask, setSelectedTask] = useState<any | null>(null);
+  const [refresh, setRefresh] = useState(false);
   const navigate = useNavigate();
 
-  function handleClick() {
-    navigate('/');
-  }
+  const handleSelect = (task: any) => {
+    setSelectedTask(task);
+  };
+
+  const handleCreate = () => {
+    navigate('/tasks/create');
+  };
+
+  const handleSuccess = () => {
+    setSelectedTask(null);
+    setRefresh(r => !r);
+  };
 
   return (
-    <div className="tasks-container">
-      <WeekSelector />
-      <NoteTable />
-      <FooterSummary />
-      <div style={{ textAlign: 'center', marginTop: '20px' }}>
-        <button className="navigate-button" onClick={handleClick}>
-          Back to Home
-        </button>
+    <div className="tasks-page-wrapper">
+      <div className="tasks-content">
+        <div className="tasks-header-row">
+          <button className="fancy-create-btn" onClick={handleCreate}>
+            + Create Task
+          </button>
+        </div>
+        {selectedTask && (
+          <TaskDetails taskId={selectedTask.id} onClose={() => setSelectedTask(null)} />
+        )}
+        {!selectedTask && (
+          <TaskList key={refresh ? '1' : '0'} onSelect={handleSelect} onEdit={() => {}} />
+        )}
       </div>
+      <FooterSummary />
     </div>
   );
 }

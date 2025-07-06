@@ -10,10 +10,10 @@ function Home() {
 
   return (
     <div className="home-container">
-      <h1>📘 Welcome to Weekly Note Keeper</h1>
-      <p>Keep track of your daily notes organized by week.</p>
+      <h1>📘 Welcome to Task Manager</h1>
+      <p>Keep track of daily tasks organized by in single application.</p>
       <button className="navigate-button" onClick={handleClick}>
-        View My Weekly Notes
+        View Tasks
       </button>
     </div>
   );

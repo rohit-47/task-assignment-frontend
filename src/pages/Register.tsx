@@ -13,16 +13,16 @@ function Register() {
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
     setSuccess('');
     try {
-      const res = await fetch('http://localhost:8080/auth/register', {
+      const res = await fetch(process.env.REACT_APP_USER_URI + '/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
@@ -30,7 +30,7 @@ function Register() {
       if (!res.ok) throw new Error('Registration failed');
       setSuccess('Registration successful! Please login.');
       setTimeout(() => navigate('/login'), 1500);
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
     }
   };
