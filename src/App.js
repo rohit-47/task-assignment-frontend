@@ -5,6 +5,7 @@ import Layout from './components/Layout.tsx';
 import Login from './pages/Login.tsx';
 import Register from './pages/Register.tsx';
 import TaskFormPage from './pages/TaskFormPage.tsx';
+import ProfilePage from './pages/ProfilePage.tsx';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/tasks/create" element={<TaskFormPage />} />
           <Route path="/tasks/update/:id" element={<TaskFormPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

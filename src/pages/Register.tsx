@@ -48,6 +48,12 @@ function Register() {
         {error && <div className="auth-error">{error}</div>}
         {success && <div className="auth-success">{success}</div>}
       </form>
+      <div style={{ marginTop: '1rem' }}>
+        <span>Already have an account? </span>
+        <button type="button" style={{ background: 'none', border: 'none', color: '#004f9e', cursor: 'pointer', textDecoration: 'underline', padding: 0 }} onClick={() => navigate('/login')}>
+          Login
+        </button>
+      </div>
     </div>
   );
 }

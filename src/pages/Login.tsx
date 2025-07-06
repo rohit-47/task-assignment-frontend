@@ -16,11 +16,11 @@ function Login() {
         body: JSON.stringify({ email, password })
       });
       if (!res.ok) throw new Error('Invalid credentials');
-      // You can store token or user info here
+      const data = await res.json();
       localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('userEmail', email); // Store user email in localStorage
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('token', data.token);
       navigate('/');
-      window.location.reload();
     } catch (err) {
       console.error(err);
     }
@@ -34,6 +34,12 @@ function Login() {
         <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
         <button type="submit">Login</button>
       </form>
+      <div style={{ marginTop: '1rem' }}>
+        <span>Don't have an account? </span>
+        <button type="button" style={{ background: 'none', border: 'none', color: '#004f9e', cursor: 'pointer', textDecoration: 'underline', padding: 0 }} onClick={() => navigate('/register')}>
+          Register
+        </button>
+      </div>
     </div>
   );
 }
